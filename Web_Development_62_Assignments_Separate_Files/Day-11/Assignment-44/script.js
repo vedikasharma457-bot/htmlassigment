@@ -1,0 +1,6 @@
+let tasks=[],filter="all",editingId=null;
+const list=document.querySelector("#tasks"),form=document.querySelector("#taskForm"),input=document.querySelector("#taskInput");
+function render(){list.replaceChildren();tasks.filter(t=>filter==="all"||(filter==="active"&&!t.done)||(filter==="done"&&t.done)).forEach(t=>{const li=document.createElement("li"),check=document.createElement("input");check.type="checkbox";check.checked=t.done;check.addEventListener("change",()=>{t.done=check.checked;render();});const span=document.createElement("span");span.textContent=t.text;if(t.done)span.className="done";const edit=document.createElement("button");edit.textContent="Edit";edit.addEventListener("click",()=>{const value=prompt("Edit task",t.text);if(value&&value.trim()){t.text=value.trim();render();}});const del=document.createElement("button");del.textContent="Delete";del.addEventListener("click",()=>{tasks=tasks.filter(x=>x.id!==t.id);render();});li.append(check,span,edit,del);list.append(li);});}
+form.addEventListener("submit",e=>{e.preventDefault();const text=input.value.trim();if(!text)return;tasks.push({id:Date.now(),text,done:false});input.value="";render();});
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.filter;render();}));
+render();

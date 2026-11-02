@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<h1>Task Manager</h1><form id="taskForm"><input id="taskInput" placeholder="Add a task" required><button>Add</button></form><div class="filters"><button data-filter="all">All</button><button data-filter="active">Active</button><button data-filter="done">Completed</button></div><ul id="tasks"></ul>
+
+</div>
+<script>
+
+let tasks=[],filter="all",editingId=null;
+const list=document.querySelector("#tasks"),form=document.querySelector("#taskForm"),input=document.querySelector("#taskInput");
+function render(){list.replaceChildren();tasks.filter(t=>filter==="all"||(filter==="active"&&!t.done)||(filter==="done"&&t.done)).forEach(t=>{const li=document.createElement("li"),check=document.createElement("input");check.type="checkbox";check.checked=t.done;check.addEventListener("change",()=>{t.done=check.checked;render();});const span=document.createElement("span");span.textContent=t.text;if(t.done)span.className="done";const edit=document.createElement("button");edit.textContent="Edit";edit.addEventListener("click",()=>{const value=prompt("Edit task",t.text);if(value&&value.tr<script src="script.js" defer></script>

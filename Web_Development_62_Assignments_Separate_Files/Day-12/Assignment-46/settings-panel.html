@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persistent Settings</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<h1>Settings</h1><section><label>Theme <select id="theme"><option value="light">Light</option><option value="dark">Dark</option></select></label><label>Display name <input id="displayName" placeholder="Your name"></label><button id="save">Save Settings</button><p id="message" aria-live="polite"></p></section>
+
+</div>
+<script>
+
+const theme=document.querySelector("#theme"),name=document.querySelector("#displayName"),message=document.querySelector("#message");
+function load(){const settings=JSON.parse(localStorage.getItem("settings")||"{}");theme.value=settings.theme||"light";name.value=settings.name||"";document.body.classList.toggle("dark",theme.value==="dark");}
+document.querySelector("#save").addEventListener("click",()=>{const settings={theme:theme.value,name:name.value.trim()};localStorage.setItem("settings",JSON.stringify(settings));document.body.classList.toggle("dark",settings.theme==="dark");message.textContent="Settings saved.";});
+load();
+
+</script>
+</body>
+</html>
+<script src="script.js" defer></script>

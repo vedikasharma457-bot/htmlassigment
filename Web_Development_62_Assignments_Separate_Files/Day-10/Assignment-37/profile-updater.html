@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safe Profile Updater</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<section><h1>Profile Updater</h1><label>Name <input id="nameInput" value="Vedika Sharma"></label><label>Bio <textarea id="bioInput">BCA AI student learning web development.</textarea></label><button id="update">Update Profile</button></section>
+<section><h2 id="profileName">Vedika Sharma</h2><p id="profileBio">BCA AI student learning web development.</p></section>
+
+</div>
+<script>
+
+document.querySelector("#update").addEventListener("click",()=>{
+ document.querySelector("#profileName").textContent=document.querySelector("#nameInput").value.trim();
+ document.querySelector("#profileBio").textContent=document.querySelector("#bioInput").value.trim();
+});
+
+</script>
+</body>
+</html>
+<script src="script.js" defer></script>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persistent To-Do</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<h1>Persistent To-Do List</h1><form id="form"><input id="input" required placeholder="New task"><button>Add</button></form><ul id="list"></ul><button id="clear">Clear all tasks</button>
+
+</div>
+<script>
+
+const KEY="persistentTasks";let tasks=JSON.parse(localStorage.getItem(KEY)||"[]");const list=document.querySelector("#list");
+function save(){localStorage.setItem(KEY,JSON.stringify(tasks));}
+function render(){list.replaceChildren();tasks.forEach(task=>{const li=document.createElement("li"),check=document.createElement("input"),span=document.createElement("span"),del=document.createElement("button");check.type="checkbox";check.checked=task.done;check.addEventListener("change",()=>{task.done=check.checked;save();render();});span.textContent=task.text;if(task.done)span.className="done";del.textContent="Delete";del.addEventListener("click",()=>{tasks=tasks.filter(t=>t.id!==task.id);save();render();});li.append(check,span,del);list.append(li);});}
+docume<script src="script.js" defer></script>

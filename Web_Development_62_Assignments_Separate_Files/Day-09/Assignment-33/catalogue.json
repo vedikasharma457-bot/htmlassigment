@@ -1,0 +1,7 @@
+{
+  "catalogue": [
+    {"id": 1, "name": "Notebook", "category": "Stationery", "price": 80, "inStock": true},
+    {"id": 2, "name": "Wireless Mouse", "category": "Electronics", "price": 700, "inStock": true},
+    {"id": 3, "name": "Water Bottle", "category": "Lifestyle", "price": 350, "inStock": false}
+  ]
+}

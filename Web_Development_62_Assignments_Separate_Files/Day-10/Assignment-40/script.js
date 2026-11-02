@@ -1,0 +1,3 @@
+const students=[{name:"Vedika",course:"BCA AI",year:"Second Year"},{name:"Aarav",course:"BCA",year:"First Year"},{name:"Riya",course:"B.Tech",year:"Second Year"}];
+function renderCard(student){const article=document.createElement("article");article.className="student";const heading=document.createElement("h2");heading.textContent=student.name;const course=document.createElement("p");course.textContent=student.course;const year=document.createElement("small");year.textContent=student.year;article.append(heading,course,year);return article;}
+const container=document.querySelector("#cards");students.forEach(student=>container.append(renderCard(student)));

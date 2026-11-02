@@ -1,0 +1,5 @@
+const KEY="persistentTasks";let tasks=JSON.parse(localStorage.getItem(KEY)||"[]");const list=document.querySelector("#list");
+function save(){localStorage.setItem(KEY,JSON.stringify(tasks));}
+function render(){list.replaceChildren();tasks.forEach(task=>{const li=document.createElement("li"),check=document.createElement("input"),span=document.createElement("span"),del=document.createElement("button");check.type="checkbox";check.checked=task.done;check.addEventListener("change",()=>{task.done=check.checked;save();render();});span.textContent=task.text;if(task.done)span.className="done";del.textContent="Delete";del.addEventListener("click",()=>{tasks=tasks.filter(t=>t.id!==task.id);save();render();});li.append(check,span,del);list.append(li);});}
+document.querySelector("#form").addEventListener("submit",e=>{e.preventDefault();const input=document.querySelector("#input");tasks.push({id:Date.now(),text:input.value.trim(),done:false});input.value="";save();render();});
+document.querySelector("#clear").addEventListener("click",()=>{tasks=[];save();render();});render();

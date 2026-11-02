@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<form class="login" id="loginForm"><h1>Welcome Back</h1><p>Sign in to continue</p><label>Email</label><input type="email" id="email" placeholder="you@example.com" required><label>Password</label><input type="password" id="password" placeholder="Password" minlength="6" required><button type="submit">Login</button><p id="message" aria-live="polite"></p></form>
+
+</div>
+<script>
+
+document.querySelector("#loginForm").addEventListener("submit",e=>{e.preventDefault();document.querySelector("#message").textContent="Demo login submitted successfully.";});
+
+</script>
+</body>
+</html>
+<script src="script.js" defer></script>

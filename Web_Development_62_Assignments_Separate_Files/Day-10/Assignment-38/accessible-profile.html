@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Profile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<section><h1>Profile Status</h1><p id="status" class="status offline" aria-live="polite">Currently offline</p><button id="toggle" aria-pressed="false">Go Online</button></section>
+
+</div>
+<script>
+
+const status=document.querySelector("#status"),button=document.querySelector("#toggle");
+button.addEventListener("click",()=>{const online=status.classList.toggle("online");status.classList.toggle("offline",!online);status.textContent=online?"Currently online":"Currently offline";button.textContent=online?"Go Offline":"Go Online";button.setAttribute("aria-pressed",String(online));});
+
+</script>
+</body>
+</html>
+<script src="script.js" defer></script>

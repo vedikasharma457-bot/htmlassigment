@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Task Planner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<header><h1>Student Task Planner</h1><p>Organize your assignments and study goals.</p></header>
+<form id="taskForm"><input id="title" placeholder="Task title" required><select id="category"><option>Study</option><option>Assignment</option><option>Personal</option></select><input id="due" type="date"><button>Add Task</button></form>
+<div class="filters"><button data-filter="all">All</button><button data-filter="active">Active</button><button data-filter="done">Completed</button></div><p id="count"></p><ul id="tasks"></ul>
+
+</div>
+<script>
+
+const KEY="studentPlannerTasks";let tasks=JSON.parse(localStorage.getItem(KEY)||"[]"),filter="all";
+const list=document.querySelector("#tasks");
+function persist(){localStorage.setItem(KEY,JSON.stringify(tasks));}
+function render(){list.replaceChildren();const shown=tasks.filter(t=>filter==="all"||(filter==="active"&&!t.done)||(filter==="done"&&t.done));document.querySelector("#count").textContent=`${tasks.filter(t=>!t.done).length} active task(s)`;shown.forEach(t=>{const li=document.createElement("li"),check=document.createElement("input"),span=document.createElement("span"),meta=document.createElement("small"),edit=document.createElement("button"),del=document.createElement("button");check.type="checkbox";check.checked=t.done;check.addEventListener("change",()=>{t.done=check.checked;persist();render();});span.textContent=t.title+(t.done?" (completed)":"");if(t.done)span.className="done";meta.textContent=`${t.category} · ${t.due||"No due date"<script src="script.js" defer></script>
